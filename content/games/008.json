@@ -3,7 +3,7 @@
   "title": "CMS公開状態確認（削除予定）",
   "image": "images/games/001.png",
   "genre": "CMS確認",
-  "status": "published",
+  "status": "hidden",
   "showUpcomingLabel": true,
   "randomEligible": true,
   "passwordProtected": false,
