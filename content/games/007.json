@@ -22,5 +22,22 @@
   "searchTerms": "Goldana ゴルダナ オンザラン first edition",
   "noteUrl": "",
   "upcomingLabel": "",
-  "showUpcomingLabel": true
+  "showUpcomingLabel": true,
+  "_fieldStates": {
+    "description": "auto",
+    "image": "missing",
+    "tags": "auto",
+    "searchTerms": "auto",
+    "releaseDate": "auto",
+    "timeLabel": "empty",
+    "minutes": "null",
+    "url": "auto",
+    "noteUrl": "empty",
+    "upcomingLabel": "empty",
+    "showUpcomingLabel": "auto",
+    "randomEligible": "auto",
+    "passwordProtected": "auto",
+    "art": "auto",
+    "artText": "auto"
+  }
 }

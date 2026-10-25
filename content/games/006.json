@@ -21,5 +21,22 @@
   "noteUrl": "",
   "releaseDate": "2026-10-15",
   "upcomingLabel": "公開予定",
-  "showUpcomingLabel": true
+  "showUpcomingLabel": true,
+  "_fieldStates": {
+    "description": "auto",
+    "image": "missing",
+    "tags": "auto",
+    "searchTerms": "auto",
+    "releaseDate": "auto",
+    "timeLabel": "auto",
+    "minutes": "null",
+    "url": "auto",
+    "noteUrl": "empty",
+    "upcomingLabel": "auto",
+    "showUpcomingLabel": "auto",
+    "randomEligible": "missing",
+    "passwordProtected": "missing",
+    "art": "auto",
+    "artText": "auto"
+  }
 }

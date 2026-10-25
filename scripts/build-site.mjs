@@ -2,6 +2,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import {createRequire} from 'node:module';
+const policy=createRequire(import.meta.url)('../content-policy.js');
 export const siteRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const publicFiles=['index.html','ip.html','app.js','core.js','ip.js','styles.css','.nojekyll'];
 const safeId=/^[a-z0-9][a-z0-9-]*$/;
@@ -45,7 +47,7 @@ export async function readContent(root=siteRoot){
   for(const name of (await fs.readdir(directory)).sort()){
    if(!/^[a-zA-Z0-9_-]+\.json$/.test(name))fail('content内に不正なファイル：'+name);
    const rel=`content/${kind}/${name}`,raw=await fs.readFile(path.join(root,rel));
-   groups[kind].push(JSON.parse(raw.toString('utf8')));files.push({path:rel,raw});
+   groups[kind].push(policy.transform(JSON.parse(raw.toString('utf8')),kind));files.push({path:rel,raw});
   }
  }
  validateRecords(groups.games,groups.ips);groups.games.sort((a,b)=>a.id-b.id);

@@ -186,6 +186,372 @@
           "name": "artText",
           "label": "代替画像の文字",
           "type": "string"
+        },
+        {
+          "name": "_fieldStates",
+          "label": "空欄・未設定の保持設定（通常は変更不要）",
+          "type": "object",
+          "description": "通常の入力欄を変更すると入力値が優先されます。未設定キーを明示的な既定値に変える場合のみ「入力値」を選択してください。",
+          "fields": [
+            {
+              "name": "description",
+              "label": "ゲーム紹介文：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "image",
+              "label": "ゲーム画像：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "tags",
+              "label": "タグ（自由に追加・削除）：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "empty-array",
+                    "label": "空配列を維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "searchTerms",
+              "label": "検索用キーワード：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "releaseDate",
+              "label": "公開日：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "timeLabel",
+              "label": "プレイ時間の表示文言：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "minutes",
+              "label": "プレイ時間（分）：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "url",
+              "label": "プレイ先URL：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "noteUrl",
+              "label": "note記事URL：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "upcomingLabel",
+              "label": "公開予定ラベルの文言：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "showUpcomingLabel",
+              "label": "公開予定ラベルを表示：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "randomEligible",
+              "label": "ランダム選択に含める：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "passwordProtected",
+              "label": "パスワード制の作品：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "art",
+              "label": "代替画像のスタイル：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "artText",
+              "label": "代替画像の文字：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     },
@@ -319,6 +685,348 @@
           "label": "以前のIP識別ID（変更時のみ）",
           "type": "string",
           "list": true
+        },
+        {
+          "name": "_fieldStates",
+          "label": "空欄・未設定の保持設定（通常は変更不要）",
+          "type": "object",
+          "description": "通常の入力欄を変更すると入力値が優先されます。未設定キーを明示的な既定値に変える場合のみ「入力値」を選択してください。",
+          "fields": [
+            {
+              "name": "category",
+              "label": "カテゴリ・区分：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "summary",
+              "label": "短い説明・補足：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "description",
+              "label": "本文紹介文：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "image",
+              "label": "メイン画像：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "gameTag",
+              "label": "関連ゲームのタグ：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "customLinks",
+              "label": "自由追加リンク：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty-array",
+                    "label": "空配列を維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "aliases",
+              "label": "以前のIP識別ID（変更時のみ）：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "links_youtube",
+              "label": "links.youtube：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "links_instagram",
+              "label": "links.instagram：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "links_suzuri",
+              "label": "links.suzuri：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "links_lineStickers",
+              "label": "links.lineStickers：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "links_x",
+              "label": "links.x：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            },
+            {
+              "name": "links_website",
+              "label": "links.website：空欄時の保持方法",
+              "type": "select",
+              "default": "auto",
+              "options": {
+                "values": [
+                  {
+                    "value": "auto",
+                    "label": "入力値・標準の空欄処理を使用"
+                  },
+                  {
+                    "value": "missing",
+                    "label": "未設定キーを維持"
+                  },
+                  {
+                    "value": "empty",
+                    "label": "空文字を維持"
+                  },
+                  {
+                    "value": "null",
+                    "label": "nullを維持"
+                  }
+                ]
+              }
+            }
+          ]
         }
       ]
     }

@@ -17,5 +17,22 @@
   "minutes": null,
   "searchTerms": "ふたりぼっち 生活 観察 ケモノ うちよそ",
   "noteUrl": "",
-  "releaseDate": "2026-08-12"
+  "releaseDate": "2026-08-12",
+  "_fieldStates": {
+    "description": "auto",
+    "image": "missing",
+    "tags": "auto",
+    "searchTerms": "auto",
+    "releaseDate": "auto",
+    "timeLabel": "auto",
+    "minutes": "null",
+    "url": "auto",
+    "noteUrl": "empty",
+    "upcomingLabel": "missing",
+    "showUpcomingLabel": "missing",
+    "randomEligible": "missing",
+    "passwordProtected": "missing",
+    "art": "auto",
+    "artText": "auto"
+  }
 }

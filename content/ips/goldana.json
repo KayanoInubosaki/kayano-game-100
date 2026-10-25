@@ -14,5 +14,20 @@
     "x": "https://x.com/goldana_runaway",
     "website": "https://goldana-guide.pages.dev/"
   },
-  "customLinks": []
+  "customLinks": [],
+  "_fieldStates": {
+    "category": "auto",
+    "summary": "auto",
+    "description": "auto",
+    "image": "auto",
+    "gameTag": "auto",
+    "customLinks": "empty-array",
+    "aliases": "missing",
+    "links_youtube": "auto",
+    "links_instagram": "empty",
+    "links_suzuri": "empty",
+    "links_lineStickers": "auto",
+    "links_x": "auto",
+    "links_website": "auto"
+  }
 }

@@ -14,5 +14,20 @@
     "x": "",
     "website": ""
   },
-  "customLinks": []
+  "customLinks": [],
+  "_fieldStates": {
+    "category": "auto",
+    "summary": "auto",
+    "description": "auto",
+    "image": "auto",
+    "gameTag": "empty",
+    "customLinks": "empty-array",
+    "aliases": "missing",
+    "links_youtube": "empty",
+    "links_instagram": "empty",
+    "links_suzuri": "empty",
+    "links_lineStickers": "empty",
+    "links_x": "empty",
+    "links_website": "empty"
+  }
 }
