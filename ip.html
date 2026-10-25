@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<script>
+window.addEventListener('error', function(event) {
+  if (!event.target || event.target.tagName !== 'SCRIPT') return;
+  var filename = event.target.getAttribute('src');
+  document.addEventListener('DOMContentLoaded', function() {
+    var warning = document.createElement('p');
+    warning.setAttribute('role', 'alert');
+    warning.textContent = '必要ファイル ' + filename + ' を読み込めません。サイト一式とバックアップを確認してください。保存を中止しています。';
+    warning.style.cssText = 'padding:20px;background:#fff1eb;color:#7b2316;overflow-wrap:anywhere';
+    document.body.prepend(warning);
+    var save = document.getElementById('save-folder'); if (save) save.disabled = true;
+  });
+}, true);
+</script>
+
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f3e9"><title>個人IP | 犬吠埼カヤノ</title>
+<link rel="stylesheet" href="styles.css">
+<script defer src="core.js"></script><script defer src="data.js"></script><script defer src="ip-data.js"></script><script defer src="ip.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#ip-main">本文に移動</a>
+<div aria-hidden="true" class="ribbon"><span>KAYANO GAME 100 KNOCKS / カヤノ産ゲーム100本ノック / </span><span>KAYANO GAME 100 KNOCKS / カヤノ産ゲーム100本ノック / </span></div>
+<header class="site-header shell">
+<a aria-label="カヤノ産ゲーム100本ノックのトップへ" class="brand" href="index.html#games"><span class="brand-mark">カ<span>✳</span></span><span class="brand-lines"><strong>カヤノ産</strong><small>GAME 100 KNOCKS</small></span></a>
+<nav aria-label="メインメニュー" class="main-nav"><a href="index.html#games">ゲーム100本</a><a aria-current="page" href="index.html#ip">個人IP</a><a href="index.html#diary">制作日記</a><a href="index.html#about">作者について</a></nav>
+</header>
+<main class="shell ip-detail-main" id="ip-main" tabindex="-1">
+<a class="ip-back" href="index.html#ip">← 個人IP一覧へ戻る</a>
+<div id="ip-detail" aria-live="polite"><p>読み込み中…</p></div>
+</main>
+<footer class="footer"><div class="shell footer-inner"><div><strong>カヤノ産ゲーム100本ノック <span aria-hidden="true">✳</span></strong></div><div class="footer-right"><span>© 2026 Kayano Inubosaki</span><a href="index.html#games">ゲーム一覧へ ↑</a></div></div></footer>
+</body>
+</html>
