@@ -1,0 +1,17 @@
+{
+  "id": 8,
+  "title": "CMS動作確認 No.008（削除予定）",
+  "description": "動作確認用の一時データです。確認後に削除します。",
+  "image": "images/games/001.png",
+  "genre": "CMS確認ジャンル",
+  "tags": [
+    "CMS自由タグ"
+  ],
+  "releaseDate": "2026-11-03",
+  "minutes": 0,
+  "status": "upcoming",
+  "upcomingLabel": "動作確認中",
+  "showUpcomingLabel": false,
+  "randomEligible": false,
+  "passwordProtected": false
+}
