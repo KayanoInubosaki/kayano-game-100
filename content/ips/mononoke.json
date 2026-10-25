@@ -5,16 +5,6 @@
   "summary": "企画中",
   "description": "単眼の妖怪女子のIPを作りたいんだよォ～！（企画中）",
   "image": "images/ip/mononoke.png",
-  "customLinks": [
-    {
-      "label": "CMSリンク確認1（削除予定）",
-      "url": "https://example.com/cms-check-1"
-    },
-    {
-      "label": "CMSリンク確認2（削除予定）",
-      "url": "https://example.com/cms-check-2"
-    }
-  ],
   "_fieldStates": {
     "category": "auto",
     "summary": "auto",
