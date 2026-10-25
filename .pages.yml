@@ -872,7 +872,7 @@
             },
             {
               "name": "links_youtube",
-              "label": "links.youtube：空欄時の保持方法",
+              "label": "YouTube URL：空欄時の保持方法",
               "type": "select",
               "default": "auto",
               "options": {
@@ -898,7 +898,7 @@
             },
             {
               "name": "links_instagram",
-              "label": "links.instagram：空欄時の保持方法",
+              "label": "Instagram URL：空欄時の保持方法",
               "type": "select",
               "default": "auto",
               "options": {
@@ -924,7 +924,7 @@
             },
             {
               "name": "links_suzuri",
-              "label": "links.suzuri：空欄時の保持方法",
+              "label": "SUZURI URL：空欄時の保持方法",
               "type": "select",
               "default": "auto",
               "options": {
@@ -950,7 +950,7 @@
             },
             {
               "name": "links_lineStickers",
-              "label": "links.lineStickers：空欄時の保持方法",
+              "label": "LINEスタンプURL：空欄時の保持方法",
               "type": "select",
               "default": "auto",
               "options": {
@@ -976,7 +976,7 @@
             },
             {
               "name": "links_x",
-              "label": "links.x：空欄時の保持方法",
+              "label": "X URL：空欄時の保持方法",
               "type": "select",
               "default": "auto",
               "options": {
@@ -1002,7 +1002,7 @@
             },
             {
               "name": "links_website",
-              "label": "links.website：空欄時の保持方法",
+              "label": "公式サイトURL：空欄時の保持方法",
               "type": "select",
               "default": "auto",
               "options": {

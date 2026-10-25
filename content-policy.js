@@ -10,5 +10,6 @@ for(const [key,fallback] of Object.entries(optional[kind])){
  else if(state==='missing'&&typeof fallback==='boolean'&&value===fallback)set(out,key,undefined,true);
 }
 return out;}
-const api={optional,transform};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.KAYANO_CONTENT_POLICY=api;
+function store(input,kind,previous={}){const out=JSON.parse(JSON.stringify(input)),states={...(previous._fieldStates||{})};for(const key of Object.keys(optional[kind])){const value=get(out,key);states[key.replaceAll('.','_')]=value===undefined?'missing':value===null?'null':value===''?'empty':Array.isArray(value)&&value.length===0?'empty-array':'auto';}out._fieldStates=states;return out;}
+const api={optional,transform,store};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.KAYANO_CONTENT_POLICY=api;
 })(typeof window!=='undefined'?window:globalThis);
