@@ -1,0 +1,18 @@
+{
+  "id": "goldana",
+  "name": "ゴルダナランナウェイ",
+  "category": "共同制作IP / Sui × カヤノ",
+  "summary": "ゲーム・アニメ",
+  "description": "ふえる、まわる、はねる……そして、なにかをうばってすぐにげる、ふしぎないきもの。",
+  "image": "images/ip/goldana.png",
+  "gameTag": "ゴルダナ",
+  "links": {
+    "youtube": "https://www.youtube.com/playlist?list=PLCghA4dZgZRk",
+    "instagram": "",
+    "suzuri": "",
+    "lineStickers": "https://store.line.me/stickershop/product/36570761/ja",
+    "x": "https://x.com/goldana_runaway",
+    "website": "https://goldana-guide.pages.dev/"
+  },
+  "customLinks": []
+}

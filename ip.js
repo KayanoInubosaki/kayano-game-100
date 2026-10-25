@@ -12,7 +12,7 @@
     const error=window.KAYANO_CORE.loadError();if(error){window.KAYANO_CORE.showLoadError(error);return;}
     const target=document.getElementById('ip-detail');
     const id=new URLSearchParams(window.location.search).get('ip');
-    const ip=(window.KAYANO_IPS||[]).find(item=>item.id===id);
+    const ip=(window.KAYANO_IPS||[]).find(item=>item.id===id||(item.aliases||[]).includes(id));
     if(!ip){target.innerHTML='<h1>IPが見つかりません</h1><p><a class="ip-back" href="index.html#ip">個人IP一覧へ戻る</a></p>';document.title='個人IP | 犬吠埼カヤノ';return;}
     document.title=`${ip.name} | 個人IP | 犬吠埼カヤノ`;
     const links=[];

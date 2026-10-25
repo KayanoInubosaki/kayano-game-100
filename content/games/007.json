@@ -1,0 +1,26 @@
+{
+  "id": 7,
+  "title": "ゴルダナ・オン・ザ・ラン ～First Edition～",
+  "randomEligible": false,
+  "passwordProtected": true,
+  "genre": "アクション",
+  "tags": [
+    "ゴルダナ",
+    "図鑑",
+    "観測",
+    "見守り",
+    "うちよそ"
+  ],
+  "description": "走るゴルダナを観測して、新たなゴルダナを集めるゲーム。超絶身内向けエディション！（一般向けも後日作りたい）",
+  "status": "published",
+  "releaseDate": "2026-10-24",
+  "url": "https://kayanoinubosaki.itch.io/goldana-1st",
+  "art": "run",
+  "artText": "RUN!",
+  "timeLabel": "",
+  "minutes": null,
+  "searchTerms": "Goldana ゴルダナ オンザラン first edition",
+  "noteUrl": "",
+  "upcomingLabel": "",
+  "showUpcomingLabel": true
+}

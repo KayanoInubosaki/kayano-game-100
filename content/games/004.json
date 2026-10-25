@@ -1,0 +1,25 @@
+{
+  "id": 4,
+  "title": "即興ゴルダナタワー",
+  "genre": "アクション",
+  "tags": [
+    "短時間",
+    "スコアアタック",
+    "ゴルダナ",
+    "スマホ対応",
+    "物理",
+    "SNS投稿"
+  ],
+  "description": "ゴルダナを落として積み上げるゲーム。ハイスコアを目指そう！",
+  "status": "published",
+  "url": "https://kayanoinubosaki.itch.io/goldana-tower",
+  "art": "tower",
+  "artText": "TOWER",
+  "timeLabel": "短時間で遊べる",
+  "minutes": null,
+  "searchTerms": "ゴルダナ たわー タワー 積み",
+  "noteUrl": "",
+  "releaseDate": "2026-10-12",
+  "upcomingLabel": "公開予定",
+  "showUpcomingLabel": true
+}

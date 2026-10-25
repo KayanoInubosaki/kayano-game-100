@@ -1,0 +1,24 @@
+{
+  "id": 1,
+  "title": "うちよそカードバトル",
+  "genre": "カード・戦略",
+  "tags": [
+    "カードゲーム",
+    "CPU対戦",
+    "お手軽",
+    "二次創作",
+    "カジュアル"
+  ],
+  "description": "某ゲームの自機＆よそのこが登場するデジタルカードゲーム。\nキャラクターごとに異なる能力を駆使し、数字の大きさを競おう！",
+  "status": "published",
+  "url": "https://kayanoinubosaki.github.io/uchiyoso/",
+  "art": "cards",
+  "artText": "CARD",
+  "timeLabel": "自由にプレイ",
+  "minutes": null,
+  "searchTerms": "うちよそ card battle デジタルカード",
+  "noteUrl": "",
+  "releaseDate": "2026-07-16",
+  "upcomingLabel": "公開予定",
+  "showUpcomingLabel": true
+}

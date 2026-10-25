@@ -1,0 +1,331 @@
+{
+  "media": [
+    {
+      "name": "games",
+      "label": "ゲーム画像",
+      "input": "images/games",
+      "output": "images/games",
+      "extensions": [
+        "png",
+        "jpg",
+        "jpeg",
+        "webp"
+      ],
+      "rename": "random"
+    },
+    {
+      "name": "ips",
+      "label": "IP画像",
+      "input": "images/ip",
+      "output": "images/ip",
+      "extensions": [
+        "png",
+        "jpg",
+        "jpeg",
+        "webp"
+      ],
+      "rename": "random"
+    }
+  ],
+  "content": [
+    {
+      "name": "games",
+      "label": "ゲーム作品",
+      "type": "collection",
+      "path": "content/games",
+      "format": "json",
+      "filename": {
+        "template": "{id}.json",
+        "field": "create"
+      },
+      "view": {
+        "primary": "title",
+        "fields": [
+          "id",
+          "title",
+          "status"
+        ]
+      },
+      "fields": [
+        {
+          "name": "id",
+          "label": "制作番号",
+          "type": "number",
+          "required": true,
+          "options": {
+            "min": 1
+          },
+          "description": "既存1〜7は維持。新規は未使用番号。重複はビルド検査で公開を中止します。"
+        },
+        {
+          "name": "title",
+          "label": "作品名",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "label": "ゲーム紹介文",
+          "type": "text"
+        },
+        {
+          "name": "image",
+          "label": "ゲーム画像",
+          "type": "image",
+          "options": {
+            "media": "games"
+          },
+          "description": "未指定なら images/games/制作番号3桁.png。既存画像も選択可能。"
+        },
+        {
+          "name": "genre",
+          "label": "ジャンル",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "tags",
+          "label": "タグ（自由に追加・削除）",
+          "type": "string",
+          "list": true
+        },
+        {
+          "name": "searchTerms",
+          "label": "検索用キーワード",
+          "type": "string"
+        },
+        {
+          "name": "releaseDate",
+          "label": "公開日",
+          "type": "date",
+          "default": "",
+          "options": {
+            "time": false,
+            "format": "yyyy-MM-dd"
+          },
+          "description": "任意・空欄可。現在日時の自動設定なし。"
+        },
+        {
+          "name": "timeLabel",
+          "label": "プレイ時間の表示文言",
+          "type": "string"
+        },
+        {
+          "name": "minutes",
+          "label": "プレイ時間（分）",
+          "type": "number",
+          "options": {
+            "min": 0
+          },
+          "description": "任意。nullは未設定、0は0分。"
+        },
+        {
+          "name": "url",
+          "label": "プレイ先URL",
+          "type": "string"
+        },
+        {
+          "name": "noteUrl",
+          "label": "note記事URL",
+          "type": "string"
+        },
+        {
+          "name": "status",
+          "label": "公開状態",
+          "type": "select",
+          "required": true,
+          "default": "upcoming",
+          "options": {
+            "values": [
+              {
+                "value": "published",
+                "label": "公開中"
+              },
+              {
+                "value": "upcoming",
+                "label": "公開予定"
+              },
+              {
+                "value": "hidden",
+                "label": "非表示"
+              }
+            ]
+          }
+        },
+        {
+          "name": "upcomingLabel",
+          "label": "公開予定ラベルの文言",
+          "type": "string",
+          "description": "未設定の既定表示は公開予定、空文字はラベルなし。"
+        },
+        {
+          "name": "showUpcomingLabel",
+          "label": "公開予定ラベルを表示",
+          "type": "boolean",
+          "default": true
+        },
+        {
+          "name": "randomEligible",
+          "label": "ランダム選択に含める",
+          "type": "boolean",
+          "default": true,
+          "description": "公開状態・URLと独立。First EditionはOFF。"
+        },
+        {
+          "name": "passwordProtected",
+          "label": "パスワード制の作品",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "name": "art",
+          "label": "代替画像のスタイル",
+          "type": "string"
+        },
+        {
+          "name": "artText",
+          "label": "代替画像の文字",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ips",
+      "label": "個人IP",
+      "type": "collection",
+      "path": "content/ips",
+      "format": "json",
+      "filename": {
+        "template": "{id}.json",
+        "field": "create"
+      },
+      "view": {
+        "primary": "name",
+        "fields": [
+          "id",
+          "name"
+        ]
+      },
+      "fields": [
+        {
+          "name": "id",
+          "label": "IP識別ID",
+          "type": "string",
+          "required": true,
+          "pattern": {
+            "regex": "^[a-z0-9][a-z0-9-]*$",
+            "message": "半角英数字とハイフンを使用。"
+          },
+          "description": "変更する場合は旧IDを以前のID欄に追加。"
+        },
+        {
+          "name": "name",
+          "label": "IP名",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "category",
+          "label": "カテゴリ・区分",
+          "type": "string"
+        },
+        {
+          "name": "summary",
+          "label": "短い説明・補足",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "label": "本文紹介文",
+          "type": "text"
+        },
+        {
+          "name": "image",
+          "label": "メイン画像",
+          "type": "image",
+          "options": {
+            "media": "ips"
+          }
+        },
+        {
+          "name": "gameTag",
+          "label": "関連ゲームのタグ",
+          "type": "string"
+        },
+        {
+          "name": "links",
+          "label": "外部リンク",
+          "type": "object",
+          "fields": [
+            {
+              "name": "youtube",
+              "label": "YouTube URL",
+              "type": "string"
+            },
+            {
+              "name": "instagram",
+              "label": "Instagram URL",
+              "type": "string"
+            },
+            {
+              "name": "suzuri",
+              "label": "SUZURI URL",
+              "type": "string"
+            },
+            {
+              "name": "lineStickers",
+              "label": "LINEスタンプURL",
+              "type": "string"
+            },
+            {
+              "name": "x",
+              "label": "X URL",
+              "type": "string"
+            },
+            {
+              "name": "website",
+              "label": "公式サイトURL",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "name": "customLinks",
+          "label": "自由追加リンク",
+          "type": "object",
+          "list": {
+            "collapsible": {
+              "collapsed": true,
+              "summary": "{label}"
+            }
+          },
+          "fields": [
+            {
+              "name": "label",
+              "label": "表示名",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "url",
+              "label": "リンクURL",
+              "type": "string",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "aliases",
+          "label": "以前のIP識別ID（変更時のみ）",
+          "type": "string",
+          "list": true
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "content": {
+      "merge": true
+    }
+  }
+}

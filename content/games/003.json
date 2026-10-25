@@ -1,0 +1,24 @@
+{
+  "id": 3,
+  "title": "潔癖 Show Time!",
+  "genre": "アクション",
+  "tags": [
+    "短時間",
+    "スコアアタック",
+    "スマホ対応",
+    "爽快",
+    "カジュアル"
+  ],
+  "description": "70秒間でスコアを競うお掃除アクション。移動したい場所をタップまたはドラッグ！",
+  "status": "published",
+  "url": "https://kayanoinubosaki.itch.io/keppeki-show-time",
+  "art": "clean",
+  "artText": "CLEAN!",
+  "timeLabel": "1プレイ70秒",
+  "minutes": 1.17,
+  "searchTerms": "潔癖 けっぺき ケッペキ",
+  "noteUrl": "",
+  "releaseDate": "2026-10-02",
+  "upcomingLabel": "公開予定",
+  "showUpcomingLabel": true
+}
