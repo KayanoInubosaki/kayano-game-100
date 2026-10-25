@@ -1,0 +1,27 @@
+{
+  "id": 8,
+  "title": "CMS公開状態確認（削除予定）",
+  "image": "images/games/001.png",
+  "genre": "CMS確認",
+  "status": "published",
+  "showUpcomingLabel": true,
+  "randomEligible": true,
+  "passwordProtected": false,
+  "_fieldStates": {
+    "description": "auto",
+    "image": "auto",
+    "tags": "auto",
+    "searchTerms": "auto",
+    "releaseDate": "auto",
+    "timeLabel": "auto",
+    "minutes": "auto",
+    "url": "auto",
+    "noteUrl": "auto",
+    "upcomingLabel": "auto",
+    "showUpcomingLabel": "auto",
+    "randomEligible": "auto",
+    "passwordProtected": "auto",
+    "art": "auto",
+    "artText": "auto"
+  }
+}
