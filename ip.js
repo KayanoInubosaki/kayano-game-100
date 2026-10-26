@@ -15,6 +15,13 @@
     const ip=(window.KAYANO_IPS||[]).find(item=>item.id===id||(item.aliases||[]).includes(id));
     if(!ip){target.innerHTML='<h1>IPが見つかりません</h1><p><a class="ip-back" href="index.html#ip">個人IP一覧へ戻る</a></p>';document.title='個人IP | 犬吠埼カヤノ';return;}
     document.title=`${ip.name} | 個人IP | 犬吠埼カヤノ`;
+    // Resolve legacy query URLs (including aliases) to the generated canonical page.
+    const canonicalURL = new URL(window.KAYANO_CORE.ipPath(ip), 'https://kayanoinubosaki.github.io/kayano-game-100/').href;
+    let canonical=document.querySelector('link[rel="canonical"]');
+    if(!canonical){canonical=document.createElement('link');canonical.rel='canonical';document.head.appendChild(canonical);}
+    canonical.href=canonicalURL;
+    if(window.location.hostname==='kayanoinubosaki.github.io' && window.location.pathname==='/kayano-game-100/ip.html'){window.location.replace(canonicalURL);return;}
+
     const links=[];
     for(const [key,label] of Object.entries(linkLabels)) {
       const url=safeURL(ip.links?.[key]);

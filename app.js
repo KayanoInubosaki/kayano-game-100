@@ -57,13 +57,13 @@
     grid.replaceChildren();
     const cardsById = new Map();
     matched.forEach((game) => {
-      const card = document.createElement('button');
+      const card = document.createElement('a');
       card.className = 'game-card' + (game.status === 'upcoming' ? ' game-card--upcoming' : '');
-      card.type = 'button';
+      card.href = core.gamePath(game);
       card.setAttribute('aria-label', `${game.title}の詳細を開く`);
       const statusText=upcomingLabel(game);
       card.innerHTML = `${artHTML(game)}<div class="game-name">${escapeHTML(game.title)}${statusText ? `<span class="game-name-status"> · ${escapeHTML(statusText)}</span>` : ''}</div><p class="game-meta">${escapeHTML(game.genre)}</p>`;
-      card.addEventListener('click', () => openGame(game));
+      card.addEventListener('click', event => { if(event && (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button > 0))return; event?.preventDefault?.(); openGame(game); });
       cardsById.set(game.id, card);
     });
     // 絞り込み中は空欄を出さず、見つかった作品だけを表示
@@ -86,13 +86,13 @@
     $('show-slots').closest('label').title = (isFiltered() || state.sort !== 'number') ? '検索・並び替え中は空き枠を表示しません' : '';
   }
   function openGame(game) {
-    const other = games.filter((g) => g.id !== game.id && g.status === 'published').map((g) => ({ ...g, score: (g.tags || []).filter((t) => (game.tags || []).includes(t)).length + (g.genre === game.genre ? 2 : 0) })).filter((g) => g.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
+    const other = core.related(game, games);
     const tags = (game.tags || []).map((t) => `<span class="dialog-tag">#${escapeHTML(t)}</span>`).join('');
     const safeGameURL = core.validUrl(game.url);
     const link = safeGameURL
       ? `<a class="dialog-link" href="${escapeHTML(safeGameURL)}" target="_blank" rel="noopener noreferrer">${core.linkText(game)} ↗</a>`
       : `<div class="dialog-upcoming">${game.status === 'published' ? 'プレイリンクは未登録です' : '公開前（リンク未登録）'}</div>`;
-    $('dialog-content').innerHTML = `<div class="dialog-layout">${artHTML(game)}<div><span class="dialog-subtitle">GAME ${twoOrThree(game.id)} / ${escapeHTML(game.genre)}</span><h2 id="dialog-title" class="dialog-title">${escapeHTML(game.title)}</h2><p class="dialog-description">${escapeHTML(game.description)}</p><div class="dialog-tags">${tags}</div>${game.timeLabel || game.status === 'published' || upcomingLabel(game) ? `<p class="dialog-status">${[game.timeLabel,game.status === 'published' ? '公開中' : upcomingLabel(game)].filter(Boolean).map(escapeHTML).join(' ／ ')}</p>` : ''}${core.accessLabel(game) ? `<p class="dialog-status">${escapeHTML(core.accessLabel(game))}</p>` : ''}${link}${core.validUrl(game.noteUrl) ? `<p><a href="${escapeHTML(game.noteUrl)}" class="dialog-note" target="_blank" rel="noopener noreferrer">制作日記を読む ↗</a></p>` : ''}</div></div>${other.length ? `<div class="dialog-more"><p class="dialog-more-title">関連ゲーム</p><div class="dialog-related">${other.map((g) => `<button type="button" class="related-button" data-related="${g.id}">${escapeHTML(g.title)} ↗</button>`).join('')}</div></div>` : ''}`;
+    $('dialog-content').innerHTML = `<div class="dialog-layout">${artHTML(game)}<div><span class="dialog-subtitle">GAME ${twoOrThree(game.id)} / ${escapeHTML(game.genre)}</span><h2 id="dialog-title" class="dialog-title">${escapeHTML(game.title)}</h2><p class="dialog-description">${escapeHTML(game.description)}</p><div class="dialog-tags">${tags}</div>${game.timeLabel || game.status === 'published' || upcomingLabel(game) ? `<p class="dialog-status">${[game.timeLabel,game.status === 'published' ? '公開中' : upcomingLabel(game)].filter(Boolean).map(escapeHTML).join(' ／ ')}</p>` : ''}${core.accessLabel(game) ? `<p class="dialog-status">${escapeHTML(core.accessLabel(game))}</p>` : ''}${link}<p><a class="dialog-page-link" href="${escapeHTML(core.gamePath(game))}">作品の紹介ページを見る →</a></p>${core.validUrl(game.noteUrl) ? `<p><a href="${escapeHTML(game.noteUrl)}" class="dialog-note" target="_blank" rel="noopener noreferrer">制作日記を読む ↗</a></p>` : ''}</div></div>${other.length ? `<div class="dialog-more"><p class="dialog-more-title">関連ゲーム</p><div class="dialog-related">${other.map((g) => `<button type="button" class="related-button" data-related="${g.id}">${escapeHTML(g.title)} ↗</button>`).join('')}</div></div>` : ''}`;
     $('dialog-content').querySelectorAll('[data-related]').forEach((button) => button.addEventListener('click', () => openGame(games.find((g) => g.id === Number(button.dataset.related)))));
     const dialog = $('game-dialog');
     if (!dialog.open) dialog.showModal();
@@ -108,7 +108,7 @@
     ips.forEach((ip) => {
       const card = document.createElement('a');
       card.className = 'ip-card ip-card--linked';
-      card.href = `ip.html?ip=${encodeURIComponent(ip.id)}`;
+      card.href = core.ipPath(ip);
       card.setAttribute('aria-label', `${ip.name}の紹介ページへ`);
       const image = ip.image || `images/ip/${ip.id}.png`;
       card.innerHTML = `<div class="ip-visual ip-visual--image"><img src="${escapeHTML(image)}" loading="lazy" decoding="async" alt=""></div><div class="ip-body"><small>${escapeHTML(ip.category || '')}</small><h2>${escapeHTML(ip.name)}</h2>${ip.summary ? `<p>${escapeHTML(ip.summary)}</p>` : ''}<span class="ip-button ip-button--link">紹介ページを見る ↗</span></div>`;
