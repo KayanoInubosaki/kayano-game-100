@@ -160,10 +160,11 @@
         event.target.closest('.ip-visual').classList.add('ip-visual--missing');
       }
     }, true);
-    const { published, registered } = core.stats(allGames);
+    const statistics = window.KAYANO_PUBLIC_STATS || core.stats(allGames);
+    const { published, registered } = statistics;
     $('live-total').textContent = String(published).padStart(2, '0');
     $('registered-total').textContent = String(registered).padStart(2, '0');
-    const labeledUpcoming=core.stats(allGames).upcoming;
+    const labeledUpcoming=statistics.upcoming;
     $('upcoming-total').textContent = labeledUpcoming ? `＋${labeledUpcoming}本 公開予定` : '';
     $('progress-fill').style.width = `${Math.min(100, registered)}%`;
     $('progress-fill').setAttribute('aria-label', `登録${registered}本／100枠`);
