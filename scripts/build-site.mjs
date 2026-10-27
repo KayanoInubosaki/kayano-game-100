@@ -6,8 +6,9 @@ import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
 const policy=createRequire(import.meta.url)('../content-policy.js');
 const core=createRequire(import.meta.url)('../core.js');
+const siteView=createRequire(import.meta.url)('../site.js');
 export const siteRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-export const publicFiles=['index.html','ip.html','app.js','core.js','ip.js','styles.css','.nojekyll'];
+export const publicFiles=['index.html','ip.html','app.js','core.js','ip.js','styles.css','site.js','.nojekyll'];
 const safeId=/^[a-z0-9][a-z0-9-]*$/;
 function fail(message){throw Error(message);}
 function url(value,label){if(value==null||value==='')return;try{const u=new URL(value);if(!['https:','http:'].includes(u.protocol))throw Error();}catch{fail(label+' はHTTP(S) URLにしてください');}}
@@ -62,9 +63,14 @@ export async function readContent(root=siteRoot){
 export function encode(data,symbol){return '/* 自動生成：正本は content/ のJSONです。直接編集しないでください。 */\nwindow.'+symbol+' = '+JSON.stringify(data,null,2)+';\n';}
 export async function build({root=siteRoot,local=false,out=path.join(root,'dist')}={}){
  const content=await readContent(root);
+ const siteRaw=await fs.readFile(path.join(root,'content/site.json'),'utf8');
+ content.site=siteView.normalize(JSON.parse(siteRaw));
+ content.revision=createHash('sha256').update(content.revision).update(siteRaw).digest('hex');
+ const template=siteView.renderHTML(await fs.readFile(path.join(root,'index.html'),'utf8'),content.site);
  // Validate all inputs before writing anything. Dist is an allowlist, never a copy of the checkout.
- if(!local){await fs.mkdir(out,{recursive:true});if((await fs.readdir(out)).length)fail('出力先が空ではありません。新しい空の出力先を指定してください');for(const name of publicFiles)await fs.copyFile(path.join(root,name),path.join(out,name));const used=new Set([...content.games.filter(g=>g.status!=='hidden').map(gameImage),...content.ips.map(ipImage)]);for(const rel of used){await fs.mkdir(path.dirname(path.join(out,rel)),{recursive:true});await fs.copyFile(path.join(root,rel),path.join(out,rel));}await generatePages(out,content,await fs.readFile(path.join(root,'index.html'),'utf8'));}
+ if(!local){await fs.mkdir(out,{recursive:true});if((await fs.readdir(out)).length)fail('出力先が空ではありません。新しい空の出力先を指定してください');for(const name of publicFiles)await fs.copyFile(path.join(root,name),path.join(out,name));const used=new Set([...content.games.filter(g=>g.status!=='hidden').map(gameImage),...content.ips.map(ipImage)]);for(const rel of used){await fs.mkdir(path.dirname(path.join(out,rel)),{recursive:true});await fs.copyFile(path.join(root,rel),path.join(out,rel));}await fs.writeFile(path.join(out,'ip.html'),siteView.renderHTML(await fs.readFile(path.join(root,'ip.html'),'utf8'),content.site));await generatePages(out,content,template);}
  const target=local?root:out;
+ await fs.writeFile(path.join(target,'site-data.js'),encode(content.site,'KAYANO_SITE'));
  await fs.writeFile(path.join(target,'data.js'),(local?'':'window.KAYANO_PUBLIC_DATA = true;\nwindow.KAYANO_PUBLIC_STATS = '+JSON.stringify(core.stats(content.games))+';\n')+encode(local?content.games:content.games.filter(g=>g.status!=='hidden'),'KAYANO_GAMES'));
  await fs.writeFile(path.join(target,'ip-data.js'),encode(content.ips,'KAYANO_IPS'));
  await fs.writeFile(path.join(target,'content-version.json'),JSON.stringify({revision:content.revision,registered:content.games.length,ips:content.ips.length}));

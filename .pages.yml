@@ -1029,6 +1029,309 @@
           ]
         }
       ]
+    },
+    {
+      "name": "site",
+      "label": "サイト設定・固定ページ",
+      "type": "file",
+      "path": "content/site.json",
+      "format": "json",
+      "fields": [
+        {
+          "name": "common",
+          "label": "共通・検索表示",
+          "type": "object",
+          "required": true,
+          "fields": [
+            {
+              "name": "siteName",
+              "label": "サイト名（フッター・個別ページのSEOタイトル）",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "browserTitle",
+              "label": "トップのブラウザータイトル",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "description",
+              "label": "検索用のサイト説明",
+              "type": "text"
+            },
+            {
+              "name": "ogDescription",
+              "label": "SNS共有用のサイト説明",
+              "type": "text"
+            },
+            {
+              "name": "brandTitle",
+              "label": "ヘッダーのサイト表記",
+              "type": "string"
+            },
+            {
+              "name": "brandSubtitle",
+              "label": "ヘッダーの英字表記",
+              "type": "string"
+            },
+            {
+              "name": "ribbonText",
+              "label": "上端リボンの表記",
+              "type": "string"
+            },
+            {
+              "name": "authorName",
+              "label": "作者名",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "authorEnglish",
+              "label": "作者名の英字表記",
+              "type": "string"
+            },
+            {
+              "name": "copyright",
+              "label": "著作権表記",
+              "type": "string"
+            },
+            {
+              "name": "backToTop",
+              "label": "フッターの戻るリンク文言",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "name": "navigation",
+          "label": "ナビゲーション",
+          "type": "object",
+          "required": true,
+          "fields": [
+            {
+              "name": "games",
+              "label": "ゲーム一覧メニュー",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "ip",
+              "label": "個人IPメニュー",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "diary",
+              "label": "制作日記メニュー",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "about",
+              "label": "作者についてメニュー",
+              "type": "string",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "home",
+          "label": "トップページ",
+          "type": "object",
+          "required": true,
+          "fields": [
+            {
+              "name": "heading",
+              "label": "トップ見出し",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "introduction",
+              "label": "トップ紹介文",
+              "type": "text"
+            },
+            {
+              "name": "browseLabel",
+              "label": "ゲームを探すボタン",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "randomLabel",
+              "label": "おまかせボタン",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "collectionHeading",
+              "label": "ゲーム一覧見出し",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "diaryHeading",
+              "label": "制作日記カード見出し",
+              "type": "string"
+            },
+            {
+              "name": "diaryDescription",
+              "label": "制作日記カード紹介文",
+              "type": "text"
+            },
+            {
+              "name": "diaryLinkLabel",
+              "label": "制作日記カードのリンク文言",
+              "type": "string"
+            },
+            {
+              "name": "ipHeading",
+              "label": "個人IPカード見出し",
+              "type": "string"
+            },
+            {
+              "name": "ipLinkLabel",
+              "label": "個人IPカードのリンク文言",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "name": "ipList",
+          "label": "個人IP一覧の固定文言",
+          "type": "object",
+          "required": true,
+          "fields": [
+            {
+              "name": "heading",
+              "label": "個人IP一覧見出し",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "introduction",
+              "label": "個人IP一覧紹介文",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "name": "diary",
+          "label": "制作日記",
+          "type": "object",
+          "required": true,
+          "fields": [
+            {
+              "name": "heading",
+              "label": "制作日記見出し",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "introduction",
+              "label": "制作日記ページ紹介文",
+              "type": "text"
+            },
+            {
+              "name": "noteTitle",
+              "label": "note紹介見出し",
+              "type": "string"
+            },
+            {
+              "name": "description",
+              "label": "note紹介文",
+              "type": "text"
+            },
+            {
+              "name": "noteLabel",
+              "label": "note記事一覧リンクの表示名",
+              "type": "string"
+            },
+            {
+              "name": "noteUrl",
+              "label": "note記事一覧URL",
+              "type": "string",
+              "description": "空欄なら記事一覧リンクを非表示。http(s) URLのみ利用できます。"
+            },
+            {
+              "name": "articles",
+              "label": "note記事リンク（追加・削除・並び替え可）",
+              "type": "object",
+              "list": {
+                "collapsible": {
+                  "collapsed": true,
+                  "summary": "{title}"
+                }
+              },
+              "fields": [
+                {
+                  "name": "title",
+                  "label": "表示タイトル",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "url",
+                  "label": "リンク先URL（https:// から入力）",
+                  "type": "string",
+                  "required": true
+                }
+              ],
+              "description": "1件ごとにタイトルとURLを入力。不要な行は削除できます。"
+            }
+          ]
+        },
+        {
+          "name": "about",
+          "label": "作者について",
+          "type": "object",
+          "required": true,
+          "fields": [
+            {
+              "name": "heading",
+              "label": "作者ページ見出し",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "introduction",
+              "label": "自己紹介文",
+              "type": "text"
+            },
+            {
+              "name": "links",
+              "label": "作者の外部リンク（追加・削除・並び替え可）",
+              "type": "object",
+              "list": {
+                "collapsible": {
+                  "collapsed": true,
+                  "summary": "{title}"
+                }
+              },
+              "fields": [
+                {
+                  "name": "title",
+                  "label": "表示タイトル",
+                  "type": "string",
+                  "required": true
+                },
+                {
+                  "name": "url",
+                  "label": "リンク先URL（https:// から入力）",
+                  "type": "string",
+                  "required": true
+                }
+              ],
+              "description": "1件ごとにタイトルとURLを入力。不要な行は削除できます。"
+            }
+          ]
+        }
+      ],
+      "operations": {
+        "delete": false,
+        "rename": false
+      }
     }
   ],
   "settings": {

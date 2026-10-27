@@ -131,7 +131,8 @@
       if (nav.dataset.nav === page) nav.setAttribute('aria-current', 'page');
       else nav.removeAttribute('aria-current');
     });
-    document.title = `${page === 'games' ? 'カヤノ産ゲーム100本ノック' : {ip:'個人IP', diary:'制作日記', about:'作者について'}[page]} | 犬吠埼カヤノ`;
+    const settings=window.KAYANO_SITE;
+    document.title = settings ? (page==='games'?settings.common.browserTitle:`${{ip:settings.ipList.heading,diary:settings.diary.heading,about:settings.about.heading}[page]} | ${settings.common.authorName}`) : `${page === 'games' ? 'カヤノ産ゲーム100本ノック' : {ip:'個人IP', diary:'制作日記', about:'作者について'}[page]} | 犬吠埼カヤノ`;
     // 内部アンカーでゲーム一覧へ移動した場合はゲーム画面を表示する
     if (hashPage === 'collection' || hashPage === 'main-content') {
       const tag = new URLSearchParams(hashQuery).get('tag');

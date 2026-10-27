@@ -1,0 +1,60 @@
+{
+  "common": {
+    "siteName": "カヤノ産ゲーム100本ノック",
+    "browserTitle": "カヤノ産ゲーム100本ノック | 犬吠埼カヤノ",
+    "description": "自作ゲームの一覧。ジャンル・キーワード検索、制作日記、個人IP。",
+    "ogDescription": "犬吠埼カヤノのゲーム一覧。ジャンル・キーワードで検索できます。",
+    "brandTitle": "カヤノ産",
+    "brandSubtitle": "GAME 100 KNOCKS",
+    "ribbonText": "KAYANO GAME 100 KNOCKS  /  カヤノ産ゲーム100本ノック  /  ",
+    "authorName": "犬吠埼カヤノ",
+    "authorEnglish": "Kayano Inubosaki",
+    "copyright": "© 2026 Kayano Inubosaki",
+    "backToTop": "一番上へ ↑"
+  },
+  "navigation": {
+    "games": "ゲーム100本",
+    "ip": "個人IP",
+    "diary": "制作日記",
+    "about": "作者について"
+  },
+  "home": {
+    "heading": "カヤノ産ゲーム100本ノック",
+    "introduction": "公開中のゲームを掲載しています。ジャンル・キーワードから検索できます。",
+    "browseLabel": "ゲームを探す",
+    "randomLabel": "おまかせで1本",
+    "collectionHeading": "ゲーム一覧",
+    "diaryHeading": "制作日記",
+    "diaryDescription": "ゲーム・個人IPの制作記録をnoteに掲載します。",
+    "diaryLinkLabel": "制作日記",
+    "ipHeading": "個人IP",
+    "ipLinkLabel": "個人IP一覧"
+  },
+  "ipList": {
+    "heading": "個人IP",
+    "introduction": "個人IPの作品・企画一覧です。"
+  },
+  "diary": {
+    "heading": "制作日記",
+    "introduction": "ゲームや個人IPの制作記録をnoteに掲載予定です。",
+    "noteTitle": "犬吠埼カヤノのnote",
+    "description": "ゲームや個人IPの制作記録を掲載します。",
+    "noteLabel": "noteの記事一覧を見る",
+    "noteUrl": "https://note.com/toshino_bakeinu/all",
+    "articles": []
+  },
+  "about": {
+    "heading": "作者について",
+    "introduction": "個人でゲームを制作しています。使用エンジン：Godot。",
+    "links": [
+      {
+        "title": "itch.io",
+        "url": "https://kayanoinubosaki.itch.io/"
+      },
+      {
+        "title": "X / Twitter",
+        "url": "https://x.com/Inumimi_Fuwari"
+      }
+    ]
+  }
+}

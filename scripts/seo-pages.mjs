@@ -3,14 +3,13 @@ import path from 'node:path';
 import {createRequire} from 'node:module';
 const core=createRequire(import.meta.url)('../core.js');
 export const baseURL='https://kayanoinubosaki.github.io/kayano-game-100/';
-const siteName='カヤノ産ゲーム100本ノック';
 export const escapeHTML=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const e=escapeHTML;
 export const gameImage=g=>g.image||`images/games/${String(g.id).padStart(3,'0')}.png`;
 export const ipImage=ip=>ip.image||`images/ip/${ip.id}.png`;
 export const absolute=rel=>new URL(rel,baseURL).href;
 const description=value=>String(value??'').replace(/\s+/g,' ').trim();
-export function metadata({title,description:desc,url,image,noindex=false}){
+export function metadata({title,description:desc,url,image,noindex=false,siteName='カヤノ産ゲーム100本ノック'}){
  return `<title>${e(title)} | ${siteName}</title>\n<meta name="description" content="${e(description(desc))}">\n<link rel="canonical" href="${e(url)}">\n${noindex?'<meta name="robots" content="noindex,follow">\n':''}<meta property="og:title" content="${e(title)} | ${siteName}">\n<meta property="og:description" content="${e(description(desc))}">\n<meta property="og:type" content="website">\n<meta property="og:url" content="${e(url)}">\n<meta property="og:image" content="${e(absolute(image))}">\n<meta name="twitter:card" content="summary_large_image">`;
 }
 const link=(url,label,cls='dialog-link')=>core.validUrl(url)?`<a class="${cls}" href="${e(core.validUrl(url))}" target="_blank" rel="noopener noreferrer">${e(label)} ↗</a>`:'';
@@ -37,13 +36,14 @@ function shell(template,meta,body,isIP){
 }
 export async function generatePages(out,content,template){
  const games=content.games.filter(core.visible),ips=content.ips,urls=[baseURL];
+ const pageMetadata=options=>metadata({...options,siteName:content.site.common.siteName});
  // A real, visible HTML card grid is present even without JavaScript.
  let home=template.replace('<div aria-label="ゲーム作品一覧" class="games-grid" id="games-grid"></div>',`<div aria-label="ゲーム作品一覧" class="games-grid" id="games-grid">${Array.from({length:Math.max(100,...games.map(g=>g.id))},(_,i)=>{const g=games.find(g=>g.id===i+1);return g?gameCard(g):`<div class="empty-slot" aria-label="No.${String(i+1).padStart(3,'0')} これからのゲーム"><span class="slot-num">${String(i+1).padStart(3,'0')}</span><span class="slot-star" aria-hidden="true">✳</span><span class="slot-title">未登録</span></div>`;}).join('')}</div>`).replace('<div class="ip-grid" id="ip-grid"></div>',`<div class="ip-grid" id="ip-grid">${ips.map(ipCard).join('')}</div>`);
  home=home.replace('id="registered-total">00','id="registered-total">'+String(content.games.length).padStart(2,'0')).replace('id="live-total">00','id="live-total">'+String(games.filter(g=>g.status==='published').length).padStart(2,'0'));
  home=home.replace('</head>',`<link rel="canonical" href="${baseURL}"><meta property="og:url" content="${baseURL}">\n<noscript><style>#page-ip[hidden]{display:block!important}</style></noscript>\n</head>`);
  await fs.writeFile(path.join(out,'index.html'),home);
- for(const g of games){const rel=core.gamePath(g),url=absolute(rel);await fs.mkdir(path.join(out,rel),{recursive:true});await fs.writeFile(path.join(out,rel,'index.html'),shell(template,metadata({title:g.title,description:g.description,url,image:gameImage(g),noindex:g.status!=='published'}),gameContent(g,games),false));if(g.status==='published')urls.push(url);}
- for(const ip of ips){const rel=core.ipPath(ip),url=absolute(rel);await fs.mkdir(path.join(out,rel),{recursive:true});await fs.writeFile(path.join(out,rel,'index.html'),shell(template,metadata({title:ip.name,description:ip.description,url,image:ipImage(ip)}),ipContent(ip,games),true));urls.push(url);
+ for(const g of games){const rel=core.gamePath(g),url=absolute(rel);await fs.mkdir(path.join(out,rel),{recursive:true});await fs.writeFile(path.join(out,rel,'index.html'),shell(template,pageMetadata({title:g.title,description:g.description,url,image:gameImage(g),noindex:g.status!=='published'}),gameContent(g,games),false));if(g.status==='published')urls.push(url);}
+ for(const ip of ips){const rel=core.ipPath(ip),url=absolute(rel);await fs.mkdir(path.join(out,rel),{recursive:true});await fs.writeFile(path.join(out,rel,'index.html'),shell(template,pageMetadata({title:ip.name,description:ip.description,url,image:ipImage(ip)}),ipContent(ip,games),true));urls.push(url);
   for(const alias of ip.aliases||[]){const aliasDir=path.join(out,'ips',alias);await fs.mkdir(aliasDir,{recursive:true});await fs.writeFile(path.join(aliasDir,'index.html'),`<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${e(ip.name)}</title><link rel="canonical" href="${e(url)}"><meta http-equiv="refresh" content="0;url=${e(url)}"></head><body><a href="${e(url)}">${e(ip.name)}</a></body></html>`);}
  }
  await fs.writeFile(path.join(out,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(url=>`  <url><loc>${e(url)}</loc></url>`).join('\n')}\n</urlset>\n`);
