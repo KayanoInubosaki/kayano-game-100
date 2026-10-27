@@ -36,12 +36,11 @@
   },
   "diary": {
     "heading": "制作日記",
-    "introduction": "ゲームや個人IPの制作記録をnoteに掲載予定です。",
+    "introduction": "ゲームや個人IPの制作記録をnoteに掲載しています。",
     "noteTitle": "犬吠埼カヤノのnote",
     "description": "ゲームや個人IPの制作記録を掲載します。",
     "noteLabel": "noteの記事一覧を見る",
-    "noteUrl": "https://note.com/toshino_bakeinu/all",
-    "articles": []
+    "noteUrl": "https://note.com/toshino_bakeinu/all"
   },
   "about": {
     "heading": "作者について",
