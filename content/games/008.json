@@ -1,0 +1,40 @@
+{
+  "id": 8,
+  "title": "飛べ！ゴルダナ",
+  "description": "ゲージの中央を狙って5回タップ！貯めた燃料でゴルダナを宇宙へ打ち上げよう！",
+  "image": "images/games/mvqiyo33-c7hqw86c.png",
+  "genre": "アクション",
+  "tags": [
+    "短時間",
+    "スコアアタック",
+    "ゴルダナ",
+    "スマホ対応",
+    "SNS投稿"
+  ],
+  "searchTerms": "ゴルダナランナウェイ,宇宙,タップ",
+  "releaseDate": "2026-10-27",
+  "timeLabel": "数分程度",
+  "url": "https://kayanoinubosaki.itch.io/goldana-flyaway",
+  "status": "published",
+  "showUpcomingLabel": false,
+  "randomEligible": true,
+  "passwordProtected": false,
+  "artText": "飛べ！ゴルダナ",
+  "_fieldStates": {
+    "description": "auto",
+    "image": "auto",
+    "tags": "auto",
+    "searchTerms": "auto",
+    "releaseDate": "auto",
+    "timeLabel": "auto",
+    "minutes": "auto",
+    "url": "auto",
+    "noteUrl": "auto",
+    "upcomingLabel": "auto",
+    "showUpcomingLabel": "auto",
+    "randomEligible": "auto",
+    "passwordProtected": "auto",
+    "art": "auto",
+    "artText": "auto"
+  }
+}
