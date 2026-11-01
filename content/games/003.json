@@ -15,9 +15,9 @@
   "art": "clean",
   "artText": "CLEAN!",
   "timeLabel": "1プレイ70秒",
-  "minutes": 1.17,
+  "minutes": 1,
   "searchTerms": "潔癖 けっぺき ケッペキ",
-  "noteUrl": "",
+  "noteUrl": "https://note.com/toshino_bakeinu/n/n6666cdb69b6e",
   "releaseDate": "2026-10-02",
   "upcomingLabel": "公開予定",
   "showUpcomingLabel": true,
@@ -37,5 +37,7 @@
     "passwordProtected": "missing",
     "art": "auto",
     "artText": "auto"
-  }
+  },
+  "randomEligible": true,
+  "passwordProtected": false
 }
