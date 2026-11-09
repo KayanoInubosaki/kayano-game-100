@@ -1,0 +1,37 @@
+{
+  "id": 9,
+  "title": "おやすみ、おいしいながれぼし",
+  "description": "銀紙のナイトキャップをかぶった、眠たがりの「バタースター」を引っ張って滑らせ、\nおいしいおふとんに寝かせてあげる2D物理パズルゲームです。\n\nスプーンやフォークにぶつかって跳ねたり、シロップの上を滑ったり、おさとうを回収したり。全24ステージです。\n\n無料体験版は最初の6ステージを遊べます。\n製品版は2026年11月16日発売予定です。",
+  "image": "images/games/mw8rtihp-orhyfuno.jpg",
+  "genre": "物理パズル",
+  "searchTerms": "2D,カジュアル,有料版あり",
+  "releaseDate": "2026-11-09",
+  "links": [
+    {
+      "label": "無料体験版（BOOTH）",
+      "url": "https://namakubiya.booth.pm/items/9119813",
+      "enabled": true
+    }
+  ],
+  "status": "upcoming",
+  "showUpcomingLabel": true,
+  "randomEligible": true,
+  "passwordProtected": false,
+  "_fieldStates": {
+    "description": "auto",
+    "image": "auto",
+    "tags": "auto",
+    "searchTerms": "auto",
+    "releaseDate": "auto",
+    "timeLabel": "auto",
+    "minutes": "auto",
+    "url": "auto",
+    "noteUrl": "auto",
+    "upcomingLabel": "auto",
+    "showUpcomingLabel": "auto",
+    "randomEligible": "auto",
+    "passwordProtected": "auto",
+    "art": "auto",
+    "artText": "auto"
+  }
+}
