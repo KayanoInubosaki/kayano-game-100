@@ -122,7 +122,40 @@
         {
           "name": "url",
           "label": "プレイ先URL",
-          "type": "string"
+          "type": "string",
+          "description": "既存作品用URL。下の配布・販売リンクが0行のときに使用します。複数リンクを登録しても、この値は保持されます。"
+        },
+        {
+          "name": "links",
+          "label": "配布・販売リンク（複数）",
+          "type": "object",
+          "list": {
+            "collapsible": {
+              "collapsed": true,
+              "summary": "{label}"
+            }
+          },
+          "description": "上から順に表示。行を追加・削除・並び替えできます。1行以上あればこちらを優先し、URL空欄または表示OFFの行は公開しません。全行削除すると既存URLへ戻ります。",
+          "fields": [
+            {
+              "name": "label",
+              "label": "表示名",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "url",
+              "label": "URL（未設定なら非表示）",
+              "type": "string"
+            },
+            {
+              "name": "enabled",
+              "label": "公開サイトに表示する",
+              "type": "boolean",
+              "default": true,
+              "description": "発売前のリンクはOFFにし、公開する日にONにしてください。自動では切り替わりません。"
+            }
+          ]
         },
         {
           "name": "noteUrl",

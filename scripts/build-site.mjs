@@ -31,6 +31,15 @@ export function validateRecords(games,ips){
      const [y,m,d]=r.releaseDate.split('-').map(Number),dt=new Date(Date.UTC(y,m-1,d));if(dt.getUTCFullYear()!==y||dt.getUTCMonth()!==m-1||dt.getUTCDate()!==d)fail('存在しない公開日');
     }
     url(r.url,'ゲームURL');url(r.noteUrl,'note URL');
+    if(r.links!==undefined){
+     if(!Array.isArray(r.links))fail('配布・販売リンクは配列にしてください');
+     for(const row of r.links){
+      if(!row||typeof row!=='object'||Array.isArray(row)||typeof row.label!=='string'||!row.label.trim())fail('配布・販売リンクには表示名が必要です');
+      if(row.url!=null&&typeof row.url!=='string')fail('配布・販売リンクのURLは文字列にしてください');
+      if(row.enabled!==undefined&&typeof row.enabled!=='boolean')fail('配布・販売リンクの表示設定は真偽値にしてください');
+      url(row.url,'配布・販売リンクURL');
+     }
+    }
    }else{
     if(typeof r.name!=='string'||!r.name.trim())fail('IP名は必須');
     for(const [k,v] of Object.entries(r.links||{}))url(v,k);
@@ -71,7 +80,7 @@ export async function build({root=siteRoot,local=false,out=path.join(root,'dist'
  if(!local){await fs.mkdir(out,{recursive:true});if((await fs.readdir(out)).length)fail('出力先が空ではありません。新しい空の出力先を指定してください');for(const name of publicFiles)await fs.copyFile(path.join(root,name),path.join(out,name));const used=new Set([...content.games.filter(g=>g.status!=='hidden').map(gameImage),...content.ips.map(ipImage)]);for(const rel of used){await fs.mkdir(path.dirname(path.join(out,rel)),{recursive:true});await fs.copyFile(path.join(root,rel),path.join(out,rel));}await fs.writeFile(path.join(out,'ip.html'),siteView.renderHTML(await fs.readFile(path.join(root,'ip.html'),'utf8'),content.site));await generatePages(out,content,template);}
  const target=local?root:out;
  await fs.writeFile(path.join(target,'site-data.js'),encode(content.site,'KAYANO_SITE'));
- await fs.writeFile(path.join(target,'data.js'),(local?'':'window.KAYANO_PUBLIC_DATA = true;\nwindow.KAYANO_PUBLIC_STATS = '+JSON.stringify(core.stats(content.games))+';\n')+encode(local?content.games:content.games.filter(g=>g.status!=='hidden'),'KAYANO_GAMES'));
+ await fs.writeFile(path.join(target,'data.js'),(local?'':'window.KAYANO_PUBLIC_DATA = true;\nwindow.KAYANO_PUBLIC_STATS = '+JSON.stringify(core.stats(content.games))+';\n')+encode(local?content.games:content.games.filter(g=>g.status!=='hidden').map(core.publicGame),'KAYANO_GAMES'));
  await fs.writeFile(path.join(target,'ip-data.js'),encode(content.ips,'KAYANO_IPS'));
  await fs.writeFile(path.join(target,'content-version.json'),JSON.stringify({revision:content.revision,registered:content.games.length,ips:content.ips.length}));
  return content;

@@ -22,12 +22,18 @@
     warning.style.cssText='padding:20px;background:#fff1eb;color:#7b2316;border:2px solid #bd5b3f;overflow-wrap:anywhere';
     document.body.prepend(warning);
   };
-  const randomCandidates = games => games.filter(game => visible(game) && game.status === 'published' && validUrl(game.url) && game.randomEligible !== false);
+  // Nonempty explicit lists replace the legacy URL, even when all rows are disabled/blank.
+  const gameLinks = game => Array.isArray(game.links) && game.links.length
+    ? game.links.filter(row=>row && row.enabled!==false && typeof row.label==='string' && row.label.trim() && validUrl(row.url)).map(row=>({label:row.label,url:validUrl(row.url)}))
+    : (validUrl(game.url) ? [{label:linkText(game),url:validUrl(game.url)}] : []);
+  // Inactive URLs stay in canonical source data, never in the public JS payload.
+  const publicGame = game => Array.isArray(game.links) && game.links.length ? {...game,url:'',links:gameLinks(game)} : {...game};
+  const randomCandidates = games => games.filter(game => visible(game) && game.status === 'published' && gameLinks(game).length > 0 && game.randomEligible !== false);
   const accessLabel = game => game.passwordProtected === true ? 'パスワード制' : '';
   const linkText = (game) => validUrl(game.url) ? (game.status === 'published' ? 'このゲームを遊ぶ' : '公開ページを見る') : '';
   const gamePath = game => `games/${String(game.id).padStart(3,'0')}/`;
   const ipPath = ip => `ips/${encodeURIComponent(ip.id)}/`;
   const related = (game, games) => games.filter(g=>g.id!==game.id && g.status==='published').map(g=>({...g,score:(g.tags||[]).filter(t=>(game.tags||[]).includes(t)).length+(g.genre===game.genre?2:0)})).filter(g=>g.score>0).sort((a,b)=>b.score-a.score).slice(0,3);
-  const api = Object.freeze({gamePath, ipPath, related,validUrl, visible, label, stats, linkText, loadError, showLoadError, randomCandidates, accessLabel});
+  const api = Object.freeze({gameLinks, publicGame, gamePath, ipPath, related,validUrl, visible, label, stats, linkText, loadError, showLoadError, randomCandidates, accessLabel});
   if(typeof module!=='undefined' && module.exports)module.exports=api;else window.KAYANO_CORE=api;
 })();

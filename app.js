@@ -90,9 +90,9 @@
   function openGame(game) {
     const other = core.related(game, games);
     const tags = (game.tags || []).map((t) => `<span class="dialog-tag">#${escapeHTML(t)}</span>`).join('');
-    const safeGameURL = core.validUrl(game.url);
-    const link = safeGameURL
-      ? `<a class="dialog-link" href="${escapeHTML(safeGameURL)}" target="_blank" rel="noopener noreferrer">${core.linkText(game)} ↗</a>`
+    const playLinks = core.gameLinks(game);
+    const link = playLinks.length
+      ? `<div class="game-play-links">${playLinks.map(item=>`<a class="dialog-link" href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.label)} ↗</a>`).join('')}</div>`
       : `<div class="dialog-upcoming">${game.status === 'published' ? 'プレイリンクは未登録です' : '公開前（リンク未登録）'}</div>`;
     $('dialog-content').innerHTML = `<div class="dialog-layout">${artHTML(game)}<div><span class="dialog-subtitle">GAME ${twoOrThree(game.id)} / ${escapeHTML(game.genre)}</span><h2 id="dialog-title" class="dialog-title">${escapeHTML(game.title)}</h2><p class="dialog-description">${escapeHTML(game.description)}</p><div class="dialog-tags">${tags}</div>${game.timeLabel || game.status === 'published' || upcomingLabel(game) ? `<p class="dialog-status">${[game.timeLabel,game.status === 'published' ? '公開中' : upcomingLabel(game)].filter(Boolean).map(escapeHTML).join(' ／ ')}</p>` : ''}${core.accessLabel(game) ? `<p class="dialog-status">${escapeHTML(core.accessLabel(game))}</p>` : ''}${link}<p><a class="dialog-page-link" href="${escapeHTML(gamePageURL(game))}">作品の紹介ページを見る →</a></p>${core.validUrl(game.noteUrl) ? `<p><a href="${escapeHTML(game.noteUrl)}" class="dialog-note" target="_blank" rel="noopener noreferrer">制作日記を読む ↗</a></p>` : ''}</div></div>${other.length ? `<div class="dialog-more"><p class="dialog-more-title">関連ゲーム</p><div class="dialog-related">${other.map((g) => `<button type="button" class="related-button" data-related="${g.id}">${escapeHTML(g.title)} ↗</button>`).join('')}</div></div>` : ''}`;
     $('dialog-content').querySelectorAll('[data-related]').forEach((button) => button.addEventListener('click', () => openGame(games.find((g) => g.id === Number(button.dataset.related)))));
