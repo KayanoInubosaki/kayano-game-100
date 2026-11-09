@@ -13,7 +13,7 @@
       "enabled": true
     }
   ],
-  "status": "upcoming",
+  "status": "hidden",
   "showUpcomingLabel": true,
   "randomEligible": true,
   "passwordProtected": false,
