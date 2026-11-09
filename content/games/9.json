@@ -14,7 +14,7 @@
     }
   ],
   "status": "published",
-  "showUpcomingLabel": true,
+  "showUpcomingLabel": false,
   "randomEligible": true,
   "passwordProtected": false,
   "_fieldStates": {
