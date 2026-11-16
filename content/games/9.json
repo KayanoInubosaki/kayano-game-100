@@ -11,6 +11,21 @@
       "label": "無料体験版（BOOTH）",
       "url": "https://namakubiya.booth.pm/items/9119813",
       "enabled": true
+    },
+    {
+      "label": "製品版（BOOTH）",
+      "url": "https://namakubiya.booth.pm/items/9119770",
+      "enabled": true
+    },
+    {
+      "label": "製品版（DLsite）",
+      "url": "https://www.dlsite.com/girls/work/=/product_id/RJ01764894.html",
+      "enabled": true
+    },
+    {
+      "label": "Full version（itch.io）",
+      "url": "https://kayanoinubosaki.itch.io/sweet-dreams-butterstar",
+      "enabled": true
     }
   ],
   "status": "published",
